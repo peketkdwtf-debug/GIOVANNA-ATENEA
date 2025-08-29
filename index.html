@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Mi hogar digital - Giovanna Atenea IA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #ffffff; /* Fondo blanco */
-        }
-        .gcse-searchbox-only {
-            margin-bottom: 20px;
             display: flex;
             justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            padding: 20px;
         }
         h1 {
             font-size: 4em;
@@ -21,26 +22,18 @@
             color: #333333;
             text-align: center;
         }
-        /* Estilos para los resultados de búsqueda */
-        .gsc-control-cse {
-            font-family: Arial, sans-serif;
+        .gcse-searchbox-only {
+            width: 100%;
+            max-width: 800px;
         }
-        .gsc-result {
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .gs-title {
-            font-size: 1.2em;
-            color: #1a0dab; /* Color de enlace de Google */
-        }
-        .gs-url {
-            color: #006621; /* Color de URL de Google */
-        }
-        .gs-snippet {
-            color: #545454;
-        }
-        .gsc-adBlock { /* Para ocultar anuncios si no los quieres */
-            display: none !important;
+        /* Estilos para que se vea bien en el celular */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em; /* Título más pequeño en celular */
+            }
+            .gcse-searchbox-only {
+                max-width: 90%; /* Ancho ajustado para pantallas pequeñas */
+            }
         }
     </style>
 </head>
@@ -49,7 +42,6 @@
     <h1>GIOVANNA ATENEA IA</h1>
     <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
     <div class="gcse-searchbox-only"></div>
-    <div class="gcse-searchresults-only"></div>
 
 </body>
 </html>
