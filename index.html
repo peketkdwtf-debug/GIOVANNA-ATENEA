@@ -18,8 +18,8 @@
             padding: 20px;
             box-sizing: border-box;
             overflow-x: hidden;
-            transition: background-image 0.5s ease-in-out; /* Transición suave para fondos */
-            background-size: cover; /* Para que el fondo cubra toda la pantalla */
+            transition: background-image 0.5s ease-in-out;
+            background-size: cover;
             background-position: center;
         }
         h1 {
@@ -34,30 +34,24 @@
         }
         .search-container {
             width: 100%;
-            max-width: 800px; /* Ancho como Google */
+            max-width: 800px;
             margin: 0 auto;
             padding: 10px;
             background-color: white;
-            border-radius: 24px; /* Bordes redondeados como Google */
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra suave como Google */
+            border-radius: 24px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
             display: flex;
             align-items: center;
         }
-        .gcse-searchbox-only {
-            width: 100%;
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-        .gcse-searchbox-only input {
+        .search-container input {
             border: none;
             outline: none;
             width: 100%;
-            font-size: 1.2em; /* Tamaño de fuente como Google */
+            font-size: 1.2em;
             padding: 10px 15px;
         }
-        .gcse-searchbox-only button {
-            background-color: #4285f4; /* Azul de Google */
+        .search-container button {
+            background-color: #4285f4;
             color: white;
             border: none;
             padding: 10px 15px;
@@ -98,7 +92,7 @@
             margin-top: 20px;
             width: 100%;
             max-width: 800px;
-            display: none; /* Oculto hasta que se active */
+            display: none;
         }
         #music-player input {
             width: 100%;
@@ -143,8 +137,8 @@
 
     <h1>GIOVANNA ATENEA IA</h1>
     <div class="search-container">
-        <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
-        <div class="gcse-searchbox-only"></div>
+        <input type="text" id="search-input" placeholder="Buscar con Giovanna">
+        <button onclick="searchGoogle()">Buscar</button>
     </div>
     <div class="creator">DE ANDRÉS DE JESÚS TOLEDO (PEKEÑO)</div>
     <div class="subtitle">TOLEDO TECHNOLOGY AND VISUAL ART</div>
@@ -183,21 +177,48 @@
             player.style.display = player.style.display === 'none' ? 'block' : 'none';
         }
 
-        // Función para buscar y reproducir música de YouTube sin dejar la página
+        // Función para buscar con Google CSE
+        function searchGoogle() {
+            const query = document.getElementById('search-input').value;
+            if (query) {
+                const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4'; // Tu clave
+                const cx = '05b6c8d1a9ce046ae'; // Tu ID de Custom Search Engine
+                const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${encodeURIComponent(query)}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.items) {
+                            window.open(data.items[0].link, '_blank');
+                        } else {
+                            alert('No se encontraron resultados.');
+                        }
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }
+
+        // Función para buscar y reproducir música de YouTube
         function searchMusic() {
             const query = document.getElementById('music-search').value;
             if (query) {
-                const apiKey = 'YOUR_YOUTUBE_API_KEY'; // Reemplaza con tu API Key de YouTube Data API v3
+                const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4'; // Tu clave
                 const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(query)}&type=video&key=${apiKey}`;
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
                         const videoId = data.items[0].id.videoId;
-                        document.getElementById('video-container').innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+                        document.getElementById('video-container').innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
                     })
                     .catch(error => console.error('Error:', error));
             }
         }
+
+        // Evento para buscar música con Enter
+        document.getElementById('music-search').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchMusic();
+            }
+        });
     </script>
 
 </body>
