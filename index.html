@@ -181,7 +181,7 @@
         function searchGoogle() {
             const query = document.getElementById('search-input').value;
             if (query) {
-                const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4'; // Tu clave
+                const apiKey = 'YOUR_API_KEY'; // Reemplaza con tu clave de Google CSE API
                 const cx = '05b6c8d1a9ce046ae'; // Tu ID de Custom Search Engine
                 const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${encodeURIComponent(query)}`;
                 fetch(url)
@@ -201,7 +201,7 @@
         function searchMusic() {
             const query = document.getElementById('music-search').value;
             if (query) {
-                const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4'; // Tu clave
+                const apiKey = 'YOUR_YOUTUBE_API_KEY'; // Reemplaza con tu clave de YouTube Data API v3
                 const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(query)}&type=video&key=${apiKey}`;
                 fetch(url)
                     .then(response => response.json())
