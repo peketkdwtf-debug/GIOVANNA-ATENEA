@@ -1,64 +1,71 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mi hogar digital - Giovanna Atenea IA</title>
+    <title>Giovanna Atenea IA - Mi Hogar Digital</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Usa min-height para mejor compatibilidad */
             margin: 0;
             flex-direction: column;
             font-family: 'Arial', sans-serif;
-            background-color: #f0f4f8; /* Fondo suave y moderno */
+            background: linear-gradient(135deg, #f0f4f8, #d9e6f2); /* Gradiente elegante */
             color: #333;
             padding: 20px;
             box-sizing: border-box;
+            overflow-x: hidden; /* Evita barras horizontales */
         }
         h1 {
-            font-size: 2.5em; /* Tamaño base para móvil */
-            margin-bottom: 20px;
+            font-size: 2.5em; /* Base para móvil */
+            margin-bottom: 30px;
             text-align: center;
-            color: #4a90e2; /* Color azul vibrante para el título */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra suave para profundidad */
+            color: #4a90e2; /* Azul vibrante */
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); /* Sombra más suave */
+            font-weight: 700; /* Negrita elegante */
+            padding: 10px 20px;
+            border-bottom: 2px solid #4a90e2; /* Línea decorativa */
         }
         .gcse-searchbox-only {
             width: 100%;
-            max-width: 600px; /* Máximo ancho para desktop */
+            max-width: 600px;
+            margin: 0 auto; /* Centrado perfecto */
         }
-        /* Responsividad para desktop */
+        /* Estilos para desktop */
         @media (min-width: 601px) {
             h1 {
-                font-size: 4em; /* Tamaño mayor en desktop */
+                font-size: 4em;
             }
             body {
-                padding: 40px; /* Más espacio en desktop */
-            }
-        }
-        /* Responsividad para móvil */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em; /* Tamaño ajustado para móvil */
-            }
-            body {
-                padding: 10px; /* Menos espacio en móvil para mejor usabilidad */
+                padding: 40px;
             }
             .gcse-searchbox-only {
-                max-width: 100%; /* Ocupa todo el ancho en móvil */
+                padding: 10px;
+                border-radius: 8px; /* Bordes redondeados en desktop */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            }
+        }
+        /* Estilos para móvil */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2em;
+            }
+            body {
+                padding: 10px;
+            }
+            .gcse-searchbox-only {
+                padding: 5px;
+                border-radius: 6px; /* Bordes redondeados en móvil */
             }
         }
     </style>
 </head>
 <body>
-
-    <h1>GIOVANNA ATENEA IA</h1>
+    <h1>Giovanna Atenea IA</h1>
     <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
     <div class="gcse-searchbox-only"></div>
-
 </body>
 </html>
-```
