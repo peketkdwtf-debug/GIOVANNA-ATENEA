@@ -22,6 +22,7 @@
             background-size: cover;
             background-position: center;
         }
+
         h1 {
             font-size: 2.5em;
             margin-bottom: 30px;
@@ -32,39 +33,74 @@
             padding: 10px 20px;
             border-bottom: 2px solid #4a90e2;
         }
-        .search-container {
+
+        /* CAJA DE BÚSQUEDA PRINCIPAL GRANDE */
+        .main-search-container {
             width: 100%;
             max-width: 800px;
-            margin: 0 auto;
-            padding: 10px;
+            margin: 0 auto 20px auto;
+            padding: 0;
             background-color: white;
-            border-radius: 24px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
             display: flex;
             align-items: center;
+            overflow: hidden;
+            height: 70px;
+            transition: all 0.3s ease;
         }
-        .gcse-searchbox-only {
-            width: 100%;
-            max-width: 100%;
-            margin: 0;
-            padding: 0;
+
+        .main-search-container:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
         }
-        .gcse-searchbox-only input {
+
+        .search-input {
+            flex: 1;
             border: none;
             outline: none;
-            width: 100%;
-            font-size: 1.2em;
-            padding: 10px 15px;
-            box-sizing: border-box;
+            font-size: 1.3em;
+            padding: 20px 25px;
+            background: transparent;
+            color: #333;
+            font-weight: 500;
         }
-        .gcse-searchbox-only button {
-            background-color: #4285f4;
+
+        .search-input::placeholder {
+            color: #999;
+            font-weight: 400;
+        }
+
+        .search-button {
+            background: linear-gradient(45deg, #4285f4, #34a853);
             color: white;
             border: none;
-            padding: 10px 15px;
+            padding: 20px 30px;
             cursor: pointer;
-            border-radius: 0 24px 24px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            height: 100%;
+            min-width: 120px;
         }
+
+        .search-button:hover {
+            background: linear-gradient(45deg, #3367d6, #2e8b47);
+            transform: scale(1.05);
+        }
+
+        .search-button:active {
+            transform: scale(0.98);
+        }
+
+        /* OCULTAR LA CAJA DE GOOGLE ORIGINAL */
+        .gcse-searchbox-only {
+            display: none !important;
+            visibility: hidden !important;
+            position: absolute;
+            left: -9999px;
+        }
+
         .creator {
             font-size: 0.9em;
             color: #d4a017;
@@ -72,6 +108,7 @@
             margin-top: 10px;
             font-style: italic;
         }
+
         .subtitle {
             font-size: 1em;
             color: #666;
@@ -79,36 +116,133 @@
             margin-top: 5px;
             font-style: italic;
         }
+
         .functions {
             margin-top: 30px;
             text-align: center;
             width: 100%;
             max-width: 800px;
         }
+
         .functions button {
-            background-color: #4a90e2;
+            background: linear-gradient(45deg, #4a90e2, #357abd);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 15px 25px;
             margin: 10px;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 25px;
             font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
+
+        .functions button:hover {
+            background: linear-gradient(45deg, #357abd, #2968a3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
+        }
+
+        /* REPRODUCTOR DE MÚSICA MEJORADO */
         #music-player {
-            margin-top: 20px;
+            margin-top: 30px;
             width: 100%;
             max-width: 800px;
             display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
         }
-        #music-player input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
+
+        .music-search-container {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
         }
+
+        #music-search {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            outline: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .music-search-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .music-search-btn:hover {
+            background: linear-gradient(45deg, #ee5a52, #da4f49);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
         #video-container {
-            margin-top: 10px;
+            margin-top: 20px;
+            text-align: center;
         }
+
+        .video-result {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-title {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .video-link {
+            background: linear-gradient(45deg, #ff4757, #ff3742);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        .video-link:hover {
+            background: linear-gradient(45deg, #ff3742, #ff2f3a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+        }
+
+        .loading {
+            color: #fff;
+            font-style: italic;
+            margin: 20px 0;
+        }
+
+        .error {
+            color: #ff6b6b;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
         /* Estilos para desktop */
         @media (min-width: 601px) {
             h1 {
@@ -117,10 +251,8 @@
             body {
                 padding: 40px;
             }
-            .search-container {
-                padding: 20px;
-            }
         }
+
         /* Estilos para móvil */
         @media (max-width: 600px) {
             h1 {
@@ -129,13 +261,23 @@
             body {
                 padding: 10px;
             }
-            .search-container {
-                padding: 10px;
-                border-radius: 20px;
+            .main-search-container {
+                height: 60px;
+                border-radius: 30px;
+            }
+            .search-input {
+                font-size: 1.1em;
+                padding: 15px 20px;
+            }
+            .search-button {
+                padding: 15px 20px;
+                font-size: 1em;
+                min-width: 80px;
             }
             .functions button {
                 width: 90%;
                 margin: 5px auto;
+                display: block;
             }
         }
     </style>
@@ -143,71 +285,202 @@
 <body>
 
     <h1>GIOVANNA ATENEA IA</h1>
-    <div class="search-container">
+    
+    <!-- CAJA DE BÚSQUEDA PRINCIPAL GRANDE -->
+    <div class="main-search-container">
+        <input type="text" class="search-input" id="main-search-input" 
+               placeholder="Buscar en Google..." 
+               onkeypress="handleMainSearch(event)">
+        <button class="search-button" onclick="performMainSearch()">🔍 Buscar</button>
+    </div>
+
+    <!-- CAJA ORIGINAL DE GOOGLE (OCULTA) -->
+    <div style="display: none;">
         <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
         <div class="gcse-searchbox-only"></div>
     </div>
+
     <div class="creator">DE ANDRÉS DE JESÚS TOLEDO (PEKEÑO)</div>
     <div class="subtitle">TOLEDO TECHNOLOGY AND VISUAL ART</div>
 
     <div class="functions">
-        <button onclick="selectBackground()">Cambiar Fondo de Pantalla</button>
+        <button onclick="selectBackground()">🖼️ Cambiar Fondo de Pantalla</button>
         <input type="file" id="background-file" style="display: none;" accept="image/*" onchange="changeBackground(this)">
-        <button onclick="toggleMusicPlayer()">Reproductor de Música</button>
+        <button onclick="toggleMusicPlayer()">🎵 Reproductor de Música</button>
     </div>
 
     <div id="music-player">
-        <input id="music-search" type="text" placeholder="Buscar música en YouTube">
-        <button onclick="searchMusic()">Buscar</button>
+        <div class="music-search-container">
+            <input id="music-search" type="text" placeholder="Buscar música en YouTube...">
+            <button class="music-search-btn" onclick="searchMusic()">🎵 Buscar</button>
+        </div>
         <div id="video-container"></div>
     </div>
 
     <script>
-        // Función para cambiar fondo de pantalla desde carpeta local
+        // BÚSQUEDA PRINCIPAL DE GOOGLE
+        function performMainSearch() {
+            const query = document.getElementById('main-search-input').value.trim();
+            if (query) {
+                const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+                window.open(googleUrl, '_blank');
+            }
+        }
+
+        function handleMainSearch(event) {
+            if (event.key === 'Enter') {
+                performMainSearch();
+            }
+        }
+
+        // CAMBIAR FONDO DE PANTALLA
         function selectBackground() {
             document.getElementById('background-file').click();
         }
+
         function changeBackground(input) {
             const file = input.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     document.body.style.backgroundImage = `url(${e.target.result})`;
+                    document.body.style.backgroundSize = 'cover';
+                    document.body.style.backgroundPosition = 'center';
+                    document.body.style.backgroundAttachment = 'fixed';
                 }
                 reader.readAsDataURL(file);
             }
         }
 
-        // Función para toggle del reproductor de música
+        // TOGGLE REPRODUCTOR DE MÚSICA
         function toggleMusicPlayer() {
             const player = document.getElementById('music-player');
-            player.style.display = player.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // Función para buscar y abrir música de YouTube en el navegador
-        function searchMusic() {
-            const query = document.getElementById('music-search').value;
-            if (query) {
-                const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4'; // Tu clave
-                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(query)}&type=video&key=${apiKey}`;
-                fetch(url)
-                    .then(response => {
-                        if (!response.ok) throw new Error('Network response was not ok');
-                        return response.json();
-                    })
-                    .then(data => {
-                        const videoId = data.items[0].id.videoId;
-                        window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank'); // Abre en nueva pestaña
-                    })
-                    .catch(error => console.error('Error:', error));
+            if (player.style.display === 'none' || player.style.display === '') {
+                player.style.display = 'block';
+                player.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                player.style.display = 'none';
             }
         }
 
-        // Evento para buscar música con Enter
-        document.getElementById('music-search').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchMusic();
+        // BÚSQUEDA DE MÚSICA EN YOUTUBE (CORREGIDA)
+        async function searchMusic() {
+            const query = document.getElementById('music-search').value.trim();
+            const container = document.getElementById('video-container');
+            
+            if (!query) {
+                container.innerHTML = '<div class="error">Por favor ingresa el nombre de una canción</div>';
+                return;
             }
+
+            // Mostrar loading
+            container.innerHTML = '<div class="loading">🎵 Buscando música...</div>';
+            
+            const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4';
+            const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(query + " music")}&type=video&key=${apiKey}`;
+            
+            try {
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    throw new Error(`Error HTTP: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.items && data.items.length > 0) {
+                    let resultsHTML = '<div style="text-align: center; margin-bottom: 15px; color: white; font-weight: bold;">🎵 Resultados encontrados:</div>';
+                    
+                    data.items.forEach((item, index) => {
+                        const videoId = item.id.videoId;
+                        const title = item.snippet.title;
+                        const channel = item.snippet.channelTitle;
+                        const thumbnail = item.snippet.thumbnails.medium.url;
+                        
+                        resultsHTML += `
+                            <div class="video-result">
+                                <img src="${thumbnail}" style="width: 200px; border-radius: 10px; margin-bottom: 10px;" alt="Thumbnail">
+                                <div class="video-title">${title}</div>
+                                <div style="color: #666; margin-bottom: 15px; font-size: 0.9em;">Por: ${channel}</div>
+                                <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="video-link">
+                                    ▶ Ver en YouTube
+                                </a>
+                                <button onclick="copyVideoLink('https://www.youtube.com/watch?v=${videoId}')" 
+                                        style="background: #4a90e2; color: white; border: none; padding: 8px 15px; border-radius: 15px; margin-left: 10px; cursor: pointer;">
+                                    📋 Copiar Link
+                                </button>
+                            </div>
+                        `;
+                    });
+                    
+                    container.innerHTML = resultsHTML;
+                } else {
+                    container.innerHTML = '<div class="error">No se encontraron resultados para esa búsqueda</div>';
+                }
+                
+            } catch (error) {
+                console.error('Error en la búsqueda:', error);
+                container.innerHTML = `
+                    <div class="error">
+                        <strong>Error al buscar música:</strong><br>
+                        ${error.message}<br><br>
+                        <em>Verificando conexión a Internet y API Key...</em>
+                    </div>
+                `;
+            }
+        }
+
+        // COPIAR LINK DE VIDEO
+        function copyVideoLink(url) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('¡Link copiado al portapapeles!');
+                }).catch(() => {
+                    fallbackCopyText(url);
+                });
+            } else {
+                fallbackCopyText(url);
+            }
+        }
+
+        function fallbackCopyText(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert('¡Link copiado al portapapeles!');
+            } catch (err) {
+                alert('No se pudo copiar el link automáticamente: ' + text);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // EVENT LISTENERS
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enter en búsqueda principal
+            const mainInput = document.getElementById('main-search-input');
+            if (mainInput) {
+                mainInput.addEventListener('keypress', handleMainSearch);
+            }
+
+            // Enter en búsqueda de música
+            const musicInput = document.getElementById('music-search');
+            if (musicInput) {
+                musicInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchMusic();
+                    }
+                });
+            }
+        });
+
+        // MENSAJE DE BIENVENIDA
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                alert('¡Bienvenido Pequeño!\n\nGIOVANNA ATENEA IA está lista para ayudarte.\n\n✨ Nueva búsqueda principal mejorada\n🎵 Reproductor de música funcional\n🖼️ Fondos personalizables');
+            }, 1000);
         });
     </script>
 
