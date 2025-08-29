@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -18,8 +19,8 @@
             padding: 20px;
             box-sizing: border-box;
             overflow-x: hidden;
-            transition: background-image 0.5s ease-in-out;
-            background-size: cover;
+            transition: background-image 0.5s ease-in-out; /* Transición suave para fondos */
+            background-size: cover; /* Para que el fondo cubra toda la pantalla */
             background-position: center;
         }
         h1 {
@@ -34,35 +35,35 @@
         }
         .search-container {
             width: 100%;
-            max-width: 582px;
+            max-width: 800px; /* Ancho como Google */
             margin: 0 auto;
-            padding: 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 24px; /* Bordes redondeados como Google */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra suave como Google */
             display: flex;
             align-items: center;
-            background: #fff;
-            border: 1px solid #dfe1e5;
-            box-shadow: none;
-            border-radius: 24px;
-            height: 44px;
         }
-        .search-container input {
+        .gcse-searchbox-only {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .gcse-searchbox-only input {
             border: none;
             outline: none;
             width: 100%;
-            font-size: 16px;
-            padding: 0 20px;
-            height: 100%;
-            box-sizing: border-box;
+            font-size: 1.2em; /* Tamaño de fuente como Google */
+            padding: 10px 15px;
         }
-        .search-container button {
-            background-color: #4285f4;
+        .gcse-searchbox-only button {
+            background-color: #4285f4; /* Azul de Google */
             color: white;
             border: none;
-            padding: 0 20px;
-            height: 100%;
+            padding: 10px 15px;
             cursor: pointer;
             border-radius: 0 24px 24px 0;
-            margin-left: -1px;
         }
         .creator {
             font-size: 0.9em;
@@ -98,7 +99,7 @@
             margin-top: 20px;
             width: 100%;
             max-width: 800px;
-            display: none;
+            display: none; /* Oculto hasta que se active */
         }
         #music-player input {
             width: 100%;
@@ -116,6 +117,9 @@
             body {
                 padding: 40px;
             }
+            .search-container {
+                padding: 20px;
+            }
         }
         /* Estilos para móvil */
         @media (max-width: 600px) {
@@ -126,8 +130,8 @@
                 padding: 10px;
             }
             .search-container {
-                max-width: 100%;
-                height: 40px;
+                padding: 10px;
+                border-radius: 20px;
             }
             .functions button {
                 width: 90%;
@@ -140,8 +144,8 @@
 
     <h1>GIOVANNA ATENEA IA</h1>
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="Buscar con Giovanna">
-        <button onclick="searchGoogle()">Buscar</button>
+        <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
+        <div class="gcse-searchbox-only"></div>
     </div>
     <div class="creator">DE ANDRÉS DE JESÚS TOLEDO (PEKEÑO)</div>
     <div class="subtitle">TOLEDO TECHNOLOGY AND VISUAL ART</div>
@@ -159,7 +163,7 @@
     </div>
 
     <script>
-        // Función para cambiar fondo de pantalla
+        // Función para cambiar fondo de pantalla desde carpeta local
         function selectBackground() {
             document.getElementById('background-file').click();
         }
@@ -174,73 +178,29 @@
             }
         }
 
-        // Función para toggle del reproductor
+        // Función para toggle del reproductor de música
         function toggleMusicPlayer() {
             const player = document.getElementById('music-player');
             player.style.display = player.style.display === 'none' ? 'block' : 'none';
         }
 
-        // Función para buscar con Google CSE
-        function searchGoogle() {
-            const query = document.getElementById('search-input').value;
-            if (query) {
-                const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4';
-                const cx = '05b6c8d1a9ce046ae';
-                const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${encodeURIComponent(query)}`;
-                fetch(url, { mode: 'cors' })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('Respuesta Google:', data);
-                        if (data.items) {
-                            window.open(data.items[0].link, '_blank');
-                        } else {
-                            alert('No se encontraron resultados.');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error en búsqueda Google:', error.message);
-                        alert(`Error al buscar. Detalle: ${error.message}. Verifica la API Key en Google Cloud Console o tu conexión.`);
-                    });
-            }
-        }
-
-        // Función para buscar y reproducir música de YouTube
+        // Función para buscar y reproducir música de YouTube sin dejar la página
         function searchMusic() {
             const query = document.getElementById('music-search').value;
             if (query) {
-                const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4';
+                const apiKey = 'YOUR_YOUTUBE_API_KEY'; // Reemplaza con tu API Key de YouTube Data API v3
                 const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(query)}&type=video&key=${apiKey}`;
-                fetch(url, { mode: 'cors' })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
-                        }
-                        return response.json();
-                    })
+                fetch(url)
+                    .then(response => response.json())
                     .then(data => {
-                        console.log('Respuesta YouTube:', data);
                         const videoId = data.items[0].id.videoId;
-                        document.getElementById('video-container').innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+                        document.getElementById('video-container').innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
                     })
-                    .catch(error => {
-                        console.error('Error en búsqueda YouTube:', error.message);
-                        alert(`Error al buscar música. Detalle: ${error.message}. Verifica la API Key en Google Cloud Console o tu conexión.`);
-                    });
+                    .catch(error => console.error('Error:', error));
             }
         }
-
-        // Evento para buscar música con Enter
-        document.getElementById('music-search').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                searchMusic();
-            }
-        });
     </script>
 
 </body>
 </html>
+```
