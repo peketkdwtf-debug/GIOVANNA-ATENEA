@@ -5,23 +5,42 @@
     <title>Mi hogar digital - Giovanna Atenea IA</title>
     <style>
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
             background-color: #ffffff; /* Fondo blanco */
         }
         .gcse-searchbox-only {
-            width: 100%;
-            max-width: 800px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
         }
         h1 {
             font-size: 4em;
             margin-bottom: 20px;
-            color: #333333; /* Este es el color del texto. Puedes cambiarlo. */
+            color: #333333;
+            text-align: center;
+        }
+        /* Estilos para los resultados de búsqueda */
+        .gsc-control-cse {
+            font-family: Arial, sans-serif;
+        }
+        .gsc-result {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .gs-title {
+            font-size: 1.2em;
+            color: #1a0dab; /* Color de enlace de Google */
+        }
+        .gs-url {
+            color: #006621; /* Color de URL de Google */
+        }
+        .gs-snippet {
+            color: #545454;
+        }
+        .gsc-adBlock { /* Para ocultar anuncios si no los quieres */
+            display: none !important;
         }
     </style>
 </head>
@@ -30,7 +49,7 @@
     <h1>GIOVANNA ATENEA IA</h1>
     <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
     <div class="gcse-searchbox-only"></div>
+    <div class="gcse-searchresults-only"></div>
 
 </body>
 </html>
-
