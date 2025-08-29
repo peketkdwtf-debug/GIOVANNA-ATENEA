@@ -18,6 +18,9 @@
             padding: 20px;
             box-sizing: border-box;
             overflow-x: hidden;
+            transition: background-image 0.5s ease-in-out; /* Transición suave para fondos */
+            background-size: cover; /* Para que el fondo cubra toda la pantalla */
+            background-position: center;
         }
         h1 {
             font-size: 2.5em;
@@ -29,14 +32,41 @@
             padding: 10px 20px;
             border-bottom: 2px solid #4a90e2;
         }
+        .search-container {
+            width: 100%;
+            max-width: 800px; /* Ancho como Google */
+            margin: 0 auto;
+            padding: 10px;
+            background-color: white;
+            border-radius: 24px; /* Bordes redondeados como Google */
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); /* Sombra suave como Google */
+            display: flex;
+            align-items: center;
+        }
         .gcse-searchbox-only {
             width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .gcse-searchbox-only input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-size: 1.2em; /* Tamaño de fuente como Google */
+            padding: 10px 15px;
+        }
+        .gcse-searchbox-only button {
+            background-color: #4285f4; /* Azul de Google */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 0 24px 24px 0;
         }
         .creator {
             font-size: 0.9em;
-            color: #d4a017; /* Dorado suave que resalta sin opacar */
+            color: #d4a017;
             text-align: center;
             margin-top: 10px;
             font-style: italic;
@@ -48,6 +78,36 @@
             margin-top: 5px;
             font-style: italic;
         }
+        .functions {
+            margin-top: 30px;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+        .functions button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        #music-player {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 800px;
+            display: none; /* Oculto hasta que se active */
+        }
+        #music-player input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #video-container {
+            margin-top: 10px;
+        }
         /* Estilos para desktop */
         @media (min-width: 601px) {
             h1 {
@@ -56,13 +116,8 @@
             body {
                 padding: 40px;
             }
-            .gcse-searchbox-only {
-                padding: 10px;
-                border-radius: 8px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            }
-            .creator {
-                font-size: 1em;
+            .search-container {
+                padding: 20px;
             }
         }
         /* Estilos para móvil */
@@ -73,24 +128,77 @@
             body {
                 padding: 10px;
             }
-            .gcse-searchbox-only {
-                padding: 5px;
-                border-radius: 6px;
+            .search-container {
+                padding: 10px;
+                border-radius: 20px;
             }
-            .creator {
-                font-size: 0.8em;
-            }
-            .subtitle {
-                font-size: 0.9em;
+            .functions button {
+                width: 90%;
+                margin: 5px auto;
             }
         }
     </style>
 </head>
 <body>
+
     <h1>GIOVANNA ATENEA IA</h1>
-    <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
-    <div class="gcse-searchbox-only"></div>
+    <div class="search-container">
+        <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
+        <div class="gcse-searchbox-only"></div>
+    </div>
     <div class="creator">DE ANDRÉS DE JESÚS TOLEDO (PEKEÑO)</div>
     <div class="subtitle">TOLEDO TECHNOLOGY AND VISUAL ART</div>
+
+    <div class="functions">
+        <button onclick="selectBackground()">Cambiar Fondo de Pantalla</button>
+        <input type="file" id="background-file" style="display: none;" accept="image/*" onchange="changeBackground(this)">
+        <button onclick="toggleMusicPlayer()">Reproductor de Música</button>
+    </div>
+
+    <div id="music-player">
+        <input id="music-search" type="text" placeholder="Buscar música en YouTube">
+        <button onclick="searchMusic()">Buscar</button>
+        <div id="video-container"></div>
+    </div>
+
+    <script>
+        // Función para cambiar fondo de pantalla desde carpeta local
+        function selectBackground() {
+            document.getElementById('background-file').click();
+        }
+        function changeBackground(input) {
+            const file = input.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.body.style.backgroundImage = `url(${e.target.result})`;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Función para toggle del reproductor de música
+        function toggleMusicPlayer() {
+            const player = document.getElementById('music-player');
+            player.style.display = player.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Función para buscar y reproducir música de YouTube sin dejar la página
+        function searchMusic() {
+            const query = document.getElementById('music-search').value;
+            if (query) {
+                const apiKey = 'YOUR_YOUTUBE_API_KEY'; // Reemplaza con tu API Key de YouTube Data API v3
+                const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${encodeURIComponent(query)}&type=video&key=${apiKey}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        const videoId = data.items[0].id.videoId;
+                        document.getElementById('video-container').innerHTML = `<iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+
 </body>
 </html>
