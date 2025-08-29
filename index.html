@@ -49,6 +49,68 @@
             font-style: italic;
         }
 
+        /* ESTILOS PARA LA CAJA DE BÚSQUEDA DE GOOGLE */
+        .gsc-control-cse, .gsc-control-cse-en {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 20px auto;
+        }
+        .gsc-search-box-tools {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            height: 70px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .gsc-search-box-tools:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
+        }
+        .gsc-input {
+            flex: 1;
+            border: none !important;
+            outline: none !important;
+            font-size: 1.3em !important;
+            padding: 20px 25px !important;
+            background: transparent !important;
+            color: #333 !important;
+            font-weight: 500 !important;
+            box-shadow: none !important;
+        }
+        .gsc-search-button-v2 {
+            background: linear-gradient(45deg, #4285f4, #34a853) !important;
+            color: white !important;
+            border: none !important;
+            cursor: pointer !important;
+            font-size: 1.2em !important;
+            font-weight: bold !important;
+            transition: all 0.3s ease !important;
+            height: 100% !important;
+            min-width: 120px !important;
+            border-radius: 0 50px 50px 0 !important;
+            padding: 20px 30px !important;
+        }
+        .gsc-search-button-v2:hover {
+            background: linear-gradient(45deg, #3367d6, #2e8b47) !important;
+            transform: scale(1.05) !important;
+        }
+        .gsc-search-button-v2:active {
+            transform: scale(0.98) !important;
+        }
+        .gsc-search-box-tools input.gsc-search-button {
+            display: none !important;
+        }
+        .gsc-branding {
+            display: none !important; /* Elimina la marca de Google */
+        }
+        .gsc-input-box {
+            background: none !important;
+        }
+        /* Fin de los estilos del buscador */
+
         .functions {
             margin-top: 30px;
             text-align: center;
