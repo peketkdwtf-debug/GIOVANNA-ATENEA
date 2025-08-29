@@ -17,7 +17,6 @@
             color: #333;
             padding: 20px;
             box-sizing: border-box;
-            overflow-x: hidden;
             transition: background-image 0.5s ease-in-out;
             background-size: cover;
             background-position: center;
@@ -32,73 +31,6 @@
             font-weight: 700;
             padding: 10px 20px;
             border-bottom: 2px solid #4a90e2;
-        }
-
-        /* CAJA DE BÚSQUEDA PRINCIPAL GRANDE */
-        .main-search-container {
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto 20px auto;
-            padding: 0;
-            background-color: white;
-            border-radius: 50px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            height: 70px;
-            transition: all 0.3s ease;
-        }
-
-        .main-search-container:hover {
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-            transform: translateY(-2px);
-        }
-
-        .search-input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 1.3em;
-            padding: 20px 25px;
-            background: transparent;
-            color: #333;
-            font-weight: 500;
-        }
-
-        .search-input::placeholder {
-            color: #999;
-            font-weight: 400;
-        }
-
-        .search-button {
-            background: linear-gradient(45deg, #4285f4, #34a853);
-            color: white;
-            border: none;
-            padding: 20px 30px;
-            cursor: pointer;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            height: 100%;
-            min-width: 120px;
-        }
-
-        .search-button:hover {
-            background: linear-gradient(45deg, #3367d6, #2e8b47);
-            transform: scale(1.05);
-        }
-
-        .search-button:active {
-            transform: scale(0.98);
-        }
-
-        /* OCULTAR LA CAJA DE GOOGLE ORIGINAL */
-        .gcse-searchbox-only {
-            display: none !important;
-            visibility: hidden !important;
-            position: absolute;
-            left: -9999px;
         }
 
         .creator {
@@ -144,7 +76,6 @@
             box-shadow: 0 8px 25px rgba(74, 144, 226, 0.4);
         }
 
-        /* REPRODUCTOR DE MÚSICA MEJORADO */
         #music-player {
             margin-top: 30px;
             width: 100%;
@@ -191,143 +122,9 @@
             box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
         }
 
-        #video-container {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .video-result {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 10px 0;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .video-title {
-            font-size: 1.2em;
-            color: #333;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .video-link {
-            background: linear-gradient(45deg, #ff4757, #ff3742);
-            color: white;
-            text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-weight: bold;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
-        }
-
-        .video-link:hover {
-            background: linear-gradient(45deg, #ff3742, #ff2f3a);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
-        }
-
-        .loading {
-            color: #fff;
-            font-style: italic;
-            margin: 20px 0;
-        }
-
-        /* RESULTADOS DE BÚSQUEDA */
-        #search-results {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .search-result-item {
-            border-bottom: 1px solid #eee;
-            padding: 15px 0;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .search-result-item:hover {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px 10px;
-        }
-
-        .search-result-title {
-            color: #1a73e8;
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-
-        .search-result-url {
-            color: #34a853;
-            font-size: 0.9em;
-            margin-bottom: 5px;
-        }
-
-        .search-result-snippet {
-            color: #333;
-            font-size: 0.95em;
-            line-height: 1.4;
-        }
-
-        .back-button {
-            background: linear-gradient(45deg, #34a853, #2e8b47);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-bottom: 15px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-
-        .error {
-            color: #ff6b6b;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            text-align: center;
-        }
-
-        /* Estilos para desktop */
-        @media (min-width: 601px) {
-            h1 {
-                font-size: 4em;
-            }
-            body {
-                padding: 40px;
-            }
-        }
-
-        /* Estilos para móvil */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2em;
-            }
-            body {
-                padding: 10px;
-            }
-            .main-search-container {
-                height: 60px;
-                border-radius: 30px;
-            }
-            .search-input {
-                font-size: 1.1em;
-                padding: 15px 20px;
-            }
-            .search-button {
-                padding: 15px 20px;
-                font-size: 1em;
-                min-width: 80px;
             }
             .functions button {
                 width: 90%;
@@ -340,26 +137,11 @@
 <body>
 
     <h1>GIOVANNA ATENEA IA</h1>
-    
-    <!-- CAJA DE BÚSQUEDA PRINCIPAL GRANDE -->
-    <div class="main-search-container">
-        <input type="text" class="search-input" id="main-search-input" 
-               placeholder="Buscar en Google..." 
-               onkeypress="handleMainSearch(event)">
-        <button class="search-button" onclick="performMainSearch()">🔍 Buscar</button>
-    </div>
-
-    <!-- RESULTADOS DE BÚSQUEDA -->
-    <div id="search-results" style="width: 100%; max-width: 800px; margin: 20px 0; display: none;"></div>
-
-    <!-- CAJA ORIGINAL DE GOOGLE (COMPLETAMENTE OCULTA) -->
-    <div style="position: absolute; left: -9999px; visibility: hidden;">
-        <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
-        <div class="gcse-searchbox-only"></div>
-    </div>
-
     <div class="creator">DE ANDRÉS DE JESÚS TOLEDO (PEKEÑO)</div>
     <div class="subtitle">TOLEDO TECHNOLOGY AND VISUAL ART</div>
+
+    <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
+    <div class="gcse-searchbox-only"></div>
 
     <div class="functions">
         <button onclick="selectBackground()">🖼️ Cambiar Fondo de Pantalla</button>
@@ -376,83 +158,6 @@
     </div>
 
     <script>
-        // BÚSQUEDA PRINCIPAL DE GOOGLE (CORREGIDA - SE MANTIENE EN LA PÁGINA)
-        async function performMainSearch() {
-            const query = document.getElementById('main-search-input').value.trim();
-            const resultsContainer = document.getElementById('search-results');
-            
-            if (!query) {
-                alert('Por favor ingresa algo para buscar');
-                return;
-            }
-
-            // Mostrar loading
-            resultsContainer.style.display = 'block';
-            resultsContainer.innerHTML = '<div style="text-align: center; padding: 20px;"><div class="loading">🔍 Buscando en Google...</div></div>';
-            
-            try {
-                // Usar Google Custom Search API
-                const apiKey = 'AIzaSyCLm3z_DL5zbA5Uom4xB9j7V-_V5Xvsch4';
-                const searchEngineId = '05b6c8d1a9ce046ae'; // Tu cx de Google
-                const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${searchEngineId}&q=${encodeURIComponent(query)}&num=8`;
-                
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                if (data.items && data.items.length > 0) {
-                    let resultsHTML = `
-                        <button class="back-button" onclick="hideSearchResults()">← Volver a GIOVANNA ATENEA IA</button>
-                        <div style="text-align: center; margin-bottom: 20px; font-size: 1.2em; font-weight: bold; color: #4a90e2;">
-                            🔍 Resultados para: "${query}"
-                        </div>
-                    `;
-                    
-                    data.items.forEach(item => {
-                        resultsHTML += `
-                            <div class="search-result-item" onclick="openResult('${item.link}')">
-                                <div class="search-result-title">${item.title}</div>
-                                <div class="search-result-url">${item.displayLink}</div>
-                                <div class="search-result-snippet">${item.snippet}</div>
-                            </div>
-                        `;
-                    });
-                    
-                    resultsContainer.innerHTML = resultsHTML;
-                } else {
-                    resultsContainer.innerHTML = `
-                        <button class="back-button" onclick="hideSearchResults()">← Volver a GIOVANNA ATENEA IA</button>
-                        <div class="error">No se encontraron resultados para "${query}"</div>
-                    `;
-                }
-                
-            } catch (error) {
-                console.error('Error en búsqueda:', error);
-                resultsContainer.innerHTML = `
-                    <button class="back-button" onclick="hideSearchResults()">← Volver a GIOVANNA ATENEA IA</button>
-                    <div class="error">
-                        <strong>Error al buscar:</strong><br>
-                        ${error.message}
-                    </div>
-                `;
-            }
-        }
-
-        function openResult(url) {
-            window.open(url, '_blank');
-        }
-
-        function hideSearchResults() {
-            document.getElementById('search-results').style.display = 'none';
-            document.getElementById('main-search-input').value = '';
-        }
-
-        function handleMainSearch(event) {
-            if (event.key === 'Enter') {
-                performMainSearch();
-            }
-        }
-
-        // CAMBIAR FONDO DE PANTALLA
         function selectBackground() {
             document.getElementById('background-file').click();
         }
@@ -471,7 +176,6 @@
             }
         }
 
-        // TOGGLE REPRODUCTOR DE MÚSICA
         function toggleMusicPlayer() {
             const player = document.getElementById('music-player');
             if (player.style.display === 'none' || player.style.display === '') {
@@ -482,147 +186,14 @@
             }
         }
 
-        // BÚSQUEDA DE MÚSICA EN YOUTUBE (CORREGIDA SIN DEPENDENCIA DE API)
-        async function searchMusic() {
+        function searchMusic() {
             const query = document.getElementById('music-search').value.trim();
-            const container = document.getElementById('video-container');
-            
-            if (!query) {
-                container.innerHTML = '<div class="error">Por favor ingresa el nombre de una canción</div>';
-                return;
-            }
-
-            // Mostrar loading
-            container.innerHTML = '<div class="loading">🎵 Buscando música...</div>';
-            
-            try {
-                // Buscar directamente en YouTube sin API
-                const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query + " official video")}`;
-                
-                // Crear resultados simulados más realistas
-                setTimeout(() => {
-                    const simulatedResults = [
-                        {
-                            title: `${query} - Video Oficial`,
-                            channel: "Canal Oficial",
-                            videoId: "dQw4w9WgXcQ", // Video de ejemplo
-                            url: searchUrl
-                        },
-                        {
-                            title: `${query} - Audio Oficial`,
-                            channel: "Música Oficial",
-                            videoId: "dQw4w9WgXcQ",
-                            url: searchUrl
-                        },
-                        {
-                            title: `${query} - Letra`,
-                            channel: "Letras y Música",
-                            videoId: "dQw4w9WgXcQ",
-                            url: searchUrl
-                        }
-                    ];
-                    
-                    let resultsHTML = '<div style="text-align: center; margin-bottom: 15px; color: white; font-weight: bold;">🎵 Resultados de música:</div>';
-                    
-                    simulatedResults.forEach((item, index) => {
-                        resultsHTML += `
-                            <div class="video-result">
-                                <div class="video-title">${item.title}</div>
-                                <div style="color: #666; margin-bottom: 15px; font-size: 0.9em;">Por: ${item.channel}</div>
-                                <a href="${item.url}" target="_blank" class="video-link">
-                                    ▶ Buscar en YouTube
-                                </a>
-                                <button onclick="copySearchQuery('${query}')" 
-                                        style="background: #4a90e2; color: white; border: none; padding: 8px 15px; border-radius: 15px; margin-left: 10px; cursor: pointer;">
-                                    📋 Copiar Búsqueda
-                                </button>
-                            </div>
-                        `;
-                    });
-                    
-                    container.innerHTML = resultsHTML;
-                }, 1000);
-                
-            } catch (error) {
-                console.error('Error en la búsqueda:', error);
-                container.innerHTML = `
-                    <div class="error">
-                        <strong>Buscando música:</strong><br>
-                        <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(query)}" target="_blank" 
-                           style="color: #4a90e2; text-decoration: none; font-weight: bold;">
-                            🎵 Buscar "${query}" en YouTube
-                        </a>
-                    </div>
-                `;
-            }
-        }
-
-        // COPIAR BÚSQUEDA DE MÚSICA
-        function copySearchQuery(query) {
-            const searchText = `${query} official video`;
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(searchText).then(() => {
-                    alert('¡Búsqueda copiada! Pégala en YouTube.');
-                }).catch(() => {
-                    fallbackCopyText(searchText);
-                });
+            if (query) {
+                window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`, '_blank');
             } else {
-                fallbackCopyText(searchText);
+                alert('Por favor, ingresa el nombre de una canción.');
             }
         }
-
-        // COPIAR LINK DE VIDEO
-        function copyVideoLink(url) {
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(url).then(() => {
-                    alert('¡Link copiado al portapapeles!');
-                }).catch(() => {
-                    fallbackCopyText(url);
-                });
-            } else {
-                fallbackCopyText(url);
-            }
-        }
-
-        function fallbackCopyText(text) {
-            const textArea = document.createElement('textarea');
-            textArea.value = text;
-            document.body.appendChild(textArea);
-            textArea.select();
-            try {
-                document.execCommand('copy');
-                alert('¡Link copiado al portapapeles!');
-            } catch (err) {
-                alert('No se pudo copiar el link automáticamente: ' + text);
-            }
-            document.body.removeChild(textArea);
-        }
-
-        // EVENT LISTENERS
-        document.addEventListener('DOMContentLoaded', function() {
-            // Enter en búsqueda principal
-            const mainInput = document.getElementById('main-search-input');
-            if (mainInput) {
-                mainInput.addEventListener('keypress', handleMainSearch);
-            }
-
-            // Enter en búsqueda de música
-            const musicInput = document.getElementById('music-search');
-            if (musicInput) {
-                musicInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        searchMusic();
-                    }
-                });
-            }
-        });
-
-        // MENSAJE DE BIENVENIDA
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                alert('¡Bienvenido Pequeño!\n\nGIOVANNA ATENEA IA está lista para ayudarte.\n\n✨ Nueva búsqueda principal mejorada\n🎵 Reproductor de música funcional\n🖼️ Fondos personalizables');
-            }, 1000);
-        });
     </script>
 
 </body>
