@@ -49,13 +49,44 @@
             font-style: italic;
         }
 
-        /* ESTILOS PARA LA CAJA DE BÚSQUEDA DE GOOGLE */
-        .gsc-control-cse, .gsc-control-cse-en {
+        /* BÚSQUEDA MEJORADA CON OPCIONES */
+        .search-container {
             width: 100%;
             max-width: 800px;
-            margin: 0 auto 20px auto;
+            margin: 20px auto;
         }
-        .gsc-search-box-tools {
+
+        .search-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .search-tab {
+            background: rgba(74, 144, 226, 0.1);
+            border: 2px solid #4a90e2;
+            color: #4a90e2;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .search-tab.active {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .search-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .search-box {
             display: flex;
             align-items: center;
             background-color: white;
@@ -65,51 +96,100 @@
             overflow: hidden;
             transition: all 0.3s ease;
         }
-        .gsc-search-box-tools:hover {
+
+        .search-box:hover {
             box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
             transform: translateY(-2px);
         }
-        .gsc-input {
+
+        .search-input {
             flex: 1;
-            border: none !important;
-            outline: none !important;
-            font-size: 1.3em !important;
-            padding: 20px 25px !important;
-            background: transparent !important;
-            color: #333 !important;
-            font-weight: 500 !important;
-            box-shadow: none !important;
+            border: none;
+            outline: none;
+            font-size: 1.3em;
+            padding: 20px 25px;
+            background: transparent;
+            color: #333;
+            font-weight: 500;
         }
-        .gsc-search-button-v2 {
-            background: linear-gradient(45deg, #4285f4, #34a853) !important;
-            color: white !important;
-            border: none !important;
-            cursor: pointer !important;
-            font-size: 1.2em !important;
-            font-weight: bold !important;
-            transition: all 0.3s ease !important;
-            height: 100% !important;
-            min-width: 120px !important;
-            border-radius: 0 50px 50px 0 !important;
-            padding: 20px 30px !important;
+
+        .search-button {
+            background: linear-gradient(45deg, #4285f4, #34a853);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            height: 100%;
+            min-width: 120px;
+            border-radius: 0 50px 50px 0;
+            padding: 20px 30px;
         }
-        .gsc-search-button-v2:hover {
-            background: linear-gradient(45deg, #3367d6, #2e8b47) !important;
-            transform: scale(1.05) !important;
+
+        .search-button:hover {
+            background: linear-gradient(45deg, #3367d6, #2e8b47);
+            transform: scale(1.05);
         }
-        .gsc-search-button-v2:active {
-            transform: scale(0.98) !important;
+
+        /* ESTILOS PARA RESULTADOS */
+        .search-results {
+            display: none;
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        .gsc-search-box-tools input.gsc-search-button {
-            display: none !important;
+
+        .back-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
-        .gsc-branding {
-            display: none !important; /* Elimina la marca de Google */
+
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
         }
-        .gsc-input-box {
-            background: none !important;
+
+        .result-item {
+            background: rgba(74, 144, 226, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4a90e2;
+            transition: all 0.3s ease;
         }
-        /* Fin de los estilos del buscador */
+
+        .result-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+        }
+
+        .result-title {
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .result-title a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+
+        .result-title a:hover {
+            text-decoration: underline;
+        }
 
         .functions {
             margin-top: 30px;
@@ -147,12 +227,14 @@
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            color: white;
         }
 
         .music-search-container {
             display: flex;
             gap: 15px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         #music-search {
@@ -163,6 +245,7 @@
             font-size: 1.1em;
             outline: none;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            min-width: 250px;
         }
 
         .music-search-btn {
@@ -184,6 +267,26 @@
             box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
         }
 
+        .music-results {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .music-item {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .music-item:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 2em;
@@ -192,6 +295,21 @@
                 width: 90%;
                 margin: 5px auto;
                 display: block;
+            }
+            .search-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            .search-tab {
+                width: 80%;
+                text-align: center;
+            }
+            .music-search-container {
+                flex-direction: column;
+            }
+            #music-search {
+                min-width: auto;
+                width: 100%;
             }
         }
     </style>
@@ -202,8 +320,23 @@
     <div class="creator">DE ANDRÉS DE JESÚS TOLEDO (PEKEÑO)</div>
     <div class="subtitle">TOLEDO TECHNOLOGY AND VISUAL ART</div>
 
-    <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
-    <div class="gcse-searchbox-only"></div>
+    <div class="search-container">
+        <div class="search-tabs">
+            <div class="search-tab active" onclick="setSearchType('web')">🌐 Web</div>
+            <div class="search-tab" onclick="setSearchType('images')">🖼️ Imágenes</div>
+            <div class="search-tab" onclick="setSearchType('videos')">📺 Videos</div>
+            <div class="search-tab" onclick="setSearchType('lens')">🔍 GIOVANNA Lente</div>
+        </div>
+        
+        <div class="search-box">
+            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Buscar en la web con GIOVANNA...">
+            <button class="search-button" onclick="performSearch()">Buscar</button>
+        </div>
+        
+        <div class="search-results" id="searchResults">
+            <!-- Aquí aparecerán los resultados -->
+        </div>
+    </div>
 
     <div class="functions">
         <button onclick="selectBackground()">🖼️ Cambiar Fondo de Pantalla</button>
@@ -212,14 +345,191 @@
     </div>
 
     <div id="music-player">
+        <h3 style="margin-bottom: 20px; text-align: center;">🎵 Reproductor GIOVANNA</h3>
         <div class="music-search-container">
-            <input id="music-search" type="text" placeholder="Buscar música en YouTube...">
-            <button class="music-search-btn" onclick="searchMusic()">🎵 Buscar</button>
+            <input id="music-search" type="text" placeholder="🎼 Buscar música, artista o canción...">
+            <button class="music-search-btn" onclick="searchMusicInternal()">🎵 Buscar</button>
         </div>
-        <div id="video-container"></div>
+        <div class="music-results" id="musicResults">
+            <div style="text-align: center; padding: 40px; opacity: 0.7;">
+                <div style="font-size: 48px; margin-bottom: 15px;">🎵</div>
+                <p>Busca tu música favorita y GIOVANNA te ayudará a encontrarla</p>
+            </div>
+        </div>
     </div>
 
     <script>
+        let currentSearchType = 'web';
+
+        function setSearchType(type) {
+            currentSearchType = type;
+            
+            // Actualizar tabs activos
+            document.querySelectorAll('.search-tab').forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Actualizar placeholder
+            const input = document.getElementById('searchInput');
+            const placeholders = {
+                'web': '🔍 Buscar en la web con GIOVANNA...',
+                'images': '🖼️ Buscar imágenes con GIOVANNA Lente...',
+                'videos': '📺 Buscar videos con GIOVANNA...',
+                'lens': '🔍 GIOVANNA Lente - Búsqueda visual inteligente...'
+            };
+            input.placeholder = placeholders[type];
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (!query) return;
+            
+            const resultsDiv = document.getElementById('searchResults');
+            resultsDiv.style.display = 'block';
+            
+            // Mostrar loading
+            resultsDiv.innerHTML = `
+                <button class="back-button" onclick="hideSearchResults()">← Volver a GIOVANNA</button>
+                <div style="text-align: center; padding: 30px;">
+                    <div style="font-size: 24px; margin-bottom: 15px;">🔍 Buscando "${query}"...</div>
+                    <div style="opacity: 0.7;">GIOVANNA está procesando tu consulta...</div>
+                </div>
+            `;
+            
+            // Simular búsqueda y mostrar resultados según el tipo
+            setTimeout(() => {
+                let resultsHTML = `<button class="back-button" onclick="hideSearchResults()">← Volver a GIOVANNA</button>`;
+                
+                if (currentSearchType === 'web') {
+                    resultsHTML += `
+                        <h2 style="margin-bottom: 25px; color: #4a90e2;">🌐 Resultados Web para "${query}":</h2>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank">
+                                    🔍 ${query} - Google Búsqueda Completa
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Resultados completos de Google para tu consulta.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://es.wikipedia.org/wiki/Especial:Buscar?search=${encodeURIComponent(query)}" target="_blank">
+                                    📚 ${query} - Wikipedia
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Información enciclopédica y referencias académicas.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(query)}" target="_blank">
+                                    🎓 ${query} - Google Académico
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Artículos científicos y publicaciones académicas.</p>
+                        </div>
+                    `;
+                } else if (currentSearchType === 'images') {
+                    resultsHTML += `
+                        <h2 style="margin-bottom: 25px; color: #4a90e2;">🖼️ GIOVANNA Lente - Búsqueda de Imágenes "${query}":</h2>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}&tbm=isch" target="_blank">
+                                    🖼️ ${query} - Google Imágenes
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Millones de imágenes de alta calidad relacionadas con tu búsqueda.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://unsplash.com/s/photos/${encodeURIComponent(query)}" target="_blank">
+                                    📸 ${query} - Unsplash
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Fotografías profesionales gratuitas y de alta resolución.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://www.pinterest.com/search/pins/?q=${encodeURIComponent(query)}" target="_blank">
+                                    📌 ${query} - Pinterest
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Ideas visuales, inspiración y colecciones de imágenes.</p>
+                        </div>
+                    `;
+                } else if (currentSearchType === 'videos') {
+                    resultsHTML += `
+                        <h2 style="margin-bottom: 25px; color: #4a90e2;">📺 Búsqueda de Videos "${query}":</h2>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(query)}" target="_blank">
+                                    📺 ${query} - YouTube
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Videos, tutoriales, música y contenido multimedia.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://vimeo.com/search?q=${encodeURIComponent(query)}" target="_blank">
+                                    🎬 ${query} - Vimeo
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Videos de alta calidad y contenido creativo profesional.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}&tbm=vid" target="_blank">
+                                    🔍 ${query} - Google Videos
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Búsqueda completa de videos en todas las plataformas.</p>
+                        </div>
+                    `;
+                } else if (currentSearchType === 'lens') {
+                    resultsHTML += `
+                        <h2 style="margin-bottom: 25px; color: #4a90e2;">🔍 GIOVANNA Lente - Búsqueda Visual "${query}":</h2>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://lens.google.com/search?q=${encodeURIComponent(query)}" target="_blank">
+                                    🔍 ${query} - Google Lens
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Búsqueda visual inteligente con reconocimiento de objetos.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}&tbm=isch&tbs=qdr:y" target="_blank">
+                                    👁️ ${query} - Búsqueda Visual Avanzada
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Imágenes recientes con búsqueda visual potenciada.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://tineye.com/search?url=${encodeURIComponent(query)}" target="_blank">
+                                    🎯 ${query} - TinEye
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Búsqueda inversa de imágenes y detección de origen.</p>
+                        </div>
+                    `;
+                }
+                
+                resultsHTML += `
+                    <div style="text-align: center; margin-top: 25px; padding: 20px; background: rgba(74, 144, 226, 0.1); border-radius: 12px;">
+                        <p style="margin: 0; color: #4a90e2; font-weight: bold;">
+                            💡 Todos los enlaces se abren en nuevas pestañas - Siempre puedes volver a GIOVANNA ATENEA IA
+                        </p>
+                    </div>
+                `;
+                
+                resultsDiv.innerHTML = resultsHTML;
+            }, 1000);
+        }
+
+        function hideSearchResults() {
+            document.getElementById('searchResults').style.display = 'none';
+            document.getElementById('searchInput').value = '';
+        }
+
         function selectBackground() {
             document.getElementById('background-file').click();
         }
@@ -248,14 +558,96 @@
             }
         }
 
-        function searchMusic() {
+        function searchMusicInternal() {
             const query = document.getElementById('music-search').value.trim();
-            if (query) {
-                window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`, '_blank');
-            } else {
-                alert('Por favor, ingresa el nombre de una canción.');
+            if (!query) {
+                alert('Por favor, ingresa el nombre de una canción o artista.');
+                return;
             }
+            
+            const resultsDiv = document.getElementById('musicResults');
+            resultsDiv.innerHTML = `
+                <div style="text-align: center; padding: 30px;">
+                    <div style="font-size: 20px; margin-bottom: 15px;">🔍 Buscando "${query}"...</div>
+                    <div style="opacity: 0.8;">GIOVANNA está procesando tu solicitud musical...</div>
+                </div>
+            `;
+            
+            // Mostrar opciones de música SIN salir de GIOVANNA
+            setTimeout(() => {
+                resultsDiv.innerHTML = `
+                    <h3 style="margin-bottom: 20px; color: #00ff88; text-align: center;">🎼 Opciones Musicales para "${query}":</h3>
+                    
+                    <div class="music-item">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 5px;">🎵 YouTube Music</div>
+                            <div style="opacity: 0.8; font-size: 14px;">Versión oficial y playlists curadas</div>
+                        </div>
+                        <a href="https://music.youtube.com/search?q=${encodeURIComponent(query)}" target="_blank" 
+                           style="background: #ff0000; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold;">
+                            ▶️ Abrir
+                        </a>
+                    </div>
+                    
+                    <div class="music-item">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 5px;">🎧 Spotify</div>
+                            <div style="opacity: 0.8; font-size: 14px;">Calidad premium y listas personalizadas</div>
+                        </div>
+                        <a href="https://open.spotify.com/search/${encodeURIComponent(query)}" target="_blank" 
+                           style="background: #1db954; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold;">
+                            🎵 Escuchar
+                        </a>
+                    </div>
+                    
+                    <div class="music-item">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 5px;">📱 YouTube Videos</div>
+                            <div style="opacity: 0.8; font-size: 14px;">Videos musicales y contenido gratuito</div>
+                        </div>
+                        <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(query)}" target="_blank" 
+                           style="background: #ff0000; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold;">
+                            📺 Ver
+                        </a>
+                    </div>
+                    
+                    <div class="music-item">
+                        <div>
+                            <div style="font-weight: bold; margin-bottom: 5px;">🎼 Apple Music</div>
+                            <div style="opacity: 0.8; font-size: 14px;">Audio de alta fidelidad y exclusivos</div>
+                        </div>
+                        <a href="https://music.apple.com/search?term=${encodeURIComponent(query)}" target="_blank" 
+                           style="background: #000000; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold;">
+                            🍎 Abrir
+                        </a>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(0,255,136,0.1); border-radius: 10px; border: 1px solid rgba(0,255,136,0.3);">
+                        <p style="margin: 0; font-size: 14px;">
+                            🎵 <strong>GIOVANNA MUSIC:</strong> Todos los enlaces se abren en nuevas pestañas para que nunca pierdas tu página
+                        </p>
+                    </div>
+                `;
+            }, 1000);
         }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const musicSearchInput = document.getElementById('music-search');
+            
+            searchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            musicSearchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchMusicInternal();
+                }
+            });
+        });
     </script>
 
 </body>
