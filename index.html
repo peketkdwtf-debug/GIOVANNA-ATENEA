@@ -49,19 +49,75 @@
             font-style: italic;
         }
 
-        /* BÚSQUEDA MEJORADA CON OPCIONES */
-        .search-container {
+        /* ESTILOS PARA LA CAJA DE BÚSQUEDA ORIGINAL CSE */
+        .gsc-control-cse, .gsc-control-cse-en {
             width: 100%;
             max-width: 800px;
-            margin: 20px auto;
+            margin: 0 auto 20px auto;
+        }
+        .gsc-search-box-tools {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 50px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            height: 70px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .gsc-search-box-tools:hover {
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+            transform: translateY(-2px);
+        }
+        .gsc-input {
+            flex: 1;
+            border: none !important;
+            outline: none !important;
+            font-size: 1.3em !important;
+            padding: 20px 25px !important;
+            background: transparent !important;
+            color: #333 !important;
+            font-weight: 500 !important;
+            box-shadow: none !important;
+        }
+        .gsc-search-button-v2 {
+            background: linear-gradient(45deg, #4285f4, #34a853) !important;
+            color: white !important;
+            border: none !important;
+            cursor: pointer !important;
+            font-size: 1.2em !important;
+            font-weight: bold !important;
+            transition: all 0.3s ease !important;
+            height: 100% !important;
+            min-width: 120px !important;
+            border-radius: 0 50px 50px 0 !important;
+            padding: 20px 30px !important;
+        }
+        .gsc-search-button-v2:hover {
+            background: linear-gradient(45deg, #3367d6, #2e8b47) !important;
+            transform: scale(1.05) !important;
+        }
+        .gsc-search-button-v2:active {
+            transform: scale(0.98) !important;
+        }
+        .gsc-search-box-tools input.gsc-search-button {
+            display: none !important;
+        }
+        .gsc-branding {
+            display: none !important;
+        }
+        .gsc-input-box {
+            background: none !important;
         }
 
+        /* ESTILOS PARA BÚSQUEDAS ADICIONALES */
         .search-tabs {
             display: flex;
             gap: 10px;
             margin-bottom: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            max-width: 800px;
         }
 
         .search-tab {
@@ -86,53 +142,54 @@
             box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
 
-        .search-box {
+        .additional-search {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .additional-search-box {
             display: flex;
             align-items: center;
-            background-color: white;
+            background-color: rgba(255,255,255,0.9);
             border-radius: 50px;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            height: 70px;
+            height: 60px;
             overflow: hidden;
             transition: all 0.3s ease;
+            margin-bottom: 10px;
         }
 
-        .search-box:hover {
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
-            transform: translateY(-2px);
-        }
-
-        .search-input {
+        .additional-search-input {
             flex: 1;
             border: none;
             outline: none;
-            font-size: 1.3em;
-            padding: 20px 25px;
+            font-size: 1.1em;
+            padding: 15px 25px;
             background: transparent;
             color: #333;
             font-weight: 500;
         }
 
-        .search-button {
-            background: linear-gradient(45deg, #4285f4, #34a853);
+        .additional-search-button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a52);
             color: white;
             border: none;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1em;
             font-weight: bold;
             transition: all 0.3s ease;
             height: 100%;
-            min-width: 120px;
+            min-width: 100px;
             border-radius: 0 50px 50px 0;
-            padding: 20px 30px;
+            padding: 15px 25px;
         }
 
-        .search-button:hover {
-            background: linear-gradient(45deg, #3367d6, #2e8b47);
+        .additional-search-button:hover {
+            background: linear-gradient(45deg, #ee5a52, #da4f49);
             transform: scale(1.05);
         }
 
-        /* ESTILOS PARA RESULTADOS */
         .search-results {
             display: none;
             background: rgba(255,255,255,0.95);
@@ -141,6 +198,8 @@
             margin-top: 20px;
             backdrop-filter: blur(10px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 800px;
+            width: 100%;
         }
 
         .back-button {
@@ -311,6 +370,17 @@
                 min-width: auto;
                 width: 100%;
             }
+            .additional-search-box {
+                flex-direction: column;
+                height: auto;
+            }
+            .additional-search-input {
+                width: 100%;
+            }
+            .additional-search-button {
+                width: 100%;
+                border-radius: 0 0 25px 25px;
+            }
         }
     </style>
 </head>
@@ -320,22 +390,27 @@
     <div class="creator">DE ANDRÉS DE JESÚS TOLEDO (PEKEÑO)</div>
     <div class="subtitle">TOLEDO TECHNOLOGY AND VISUAL ART</div>
 
-    <div class="search-container">
-        <div class="search-tabs">
-            <div class="search-tab active" onclick="setSearchType('web')">🌐 Web</div>
-            <div class="search-tab" onclick="setSearchType('images')">🖼️ Imágenes</div>
-            <div class="search-tab" onclick="setSearchType('videos')">📺 Videos</div>
-            <div class="search-tab" onclick="setSearchType('lens')">🔍 GIOVANNA Lente</div>
+    <!-- BÚSQUEDA PRINCIPAL CON GOOGLE CSE (COMO ANTES) -->
+    <script async src="https://cse.google.com/cse.js?cx=05b6c8d1a9ce046ae"></script>
+    <div class="gcse-searchbox-only"></div>
+
+    <!-- BÚSQUEDAS ADICIONALES CON PESTAÑAS -->
+    <div class="search-tabs">
+        <div class="search-tab active" onclick="setSearchType('images')">🖼️ Imágenes</div>
+        <div class="search-tab" onclick="setSearchType('videos')">📺 Videos</div>
+        <div class="search-tab" onclick="setSearchType('lens')">🔍 GIOVANNA Lente</div>
+        <div class="search-tab" onclick="setSearchType('news')">📰 Noticias</div>
+    </div>
+
+    <div class="additional-search">
+        <div class="additional-search-box">
+            <input type="text" class="additional-search-input" id="additionalSearchInput" placeholder="🖼️ Buscar imágenes con GIOVANNA...">
+            <button class="additional-search-button" onclick="performAdditionalSearch()">Buscar</button>
         </div>
-        
-        <div class="search-box">
-            <input type="text" class="search-input" id="searchInput" placeholder="🔍 Buscar en la web con GIOVANNA...">
-            <button class="search-button" onclick="performSearch()">Buscar</button>
-        </div>
-        
-        <div class="search-results" id="searchResults">
-            <!-- Aquí aparecerán los resultados -->
-        </div>
+    </div>
+
+    <div class="search-results" id="searchResults">
+        <!-- Aquí aparecerán los resultados de búsquedas adicionales -->
     </div>
 
     <div class="functions">
@@ -359,7 +434,7 @@
     </div>
 
     <script>
-        let currentSearchType = 'web';
+        let currentSearchType = 'images';
 
         function setSearchType(type) {
             currentSearchType = type;
@@ -369,18 +444,18 @@
             event.target.classList.add('active');
             
             // Actualizar placeholder
-            const input = document.getElementById('searchInput');
+            const input = document.getElementById('additionalSearchInput');
             const placeholders = {
-                'web': '🔍 Buscar en la web con GIOVANNA...',
-                'images': '🖼️ Buscar imágenes con GIOVANNA Lente...',
+                'images': '🖼️ Buscar imágenes con GIOVANNA...',
                 'videos': '📺 Buscar videos con GIOVANNA...',
-                'lens': '🔍 GIOVANNA Lente - Búsqueda visual inteligente...'
+                'lens': '🔍 GIOVANNA Lente - Búsqueda visual...',
+                'news': '📰 Buscar noticias con GIOVANNA...'
             };
             input.placeholder = placeholders[type];
         }
 
-        function performSearch() {
-            const query = document.getElementById('searchInput').value.trim();
+        function performAdditionalSearch() {
+            const query = document.getElementById('additionalSearchInput').value.trim();
             if (!query) return;
             
             const resultsDiv = document.getElementById('searchResults');
@@ -395,41 +470,16 @@
                 </div>
             `;
             
+            // Scroll suave a resultados
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+            
             // Simular búsqueda y mostrar resultados según el tipo
             setTimeout(() => {
                 let resultsHTML = `<button class="back-button" onclick="hideSearchResults()">← Volver a GIOVANNA</button>`;
                 
-                if (currentSearchType === 'web') {
+                if (currentSearchType === 'images') {
                     resultsHTML += `
-                        <h2 style="margin-bottom: 25px; color: #4a90e2;">🌐 Resultados Web para "${query}":</h2>
-                        <div class="result-item">
-                            <div class="result-title">
-                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}" target="_blank">
-                                    🔍 ${query} - Google Búsqueda Completa
-                                </a>
-                            </div>
-                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Resultados completos de Google para tu consulta.</p>
-                        </div>
-                        <div class="result-item">
-                            <div class="result-title">
-                                <a href="https://es.wikipedia.org/wiki/Especial:Buscar?search=${encodeURIComponent(query)}" target="_blank">
-                                    📚 ${query} - Wikipedia
-                                </a>
-                            </div>
-                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Información enciclopédica y referencias académicas.</p>
-                        </div>
-                        <div class="result-item">
-                            <div class="result-title">
-                                <a href="https://scholar.google.com/scholar?q=${encodeURIComponent(query)}" target="_blank">
-                                    🎓 ${query} - Google Académico
-                                </a>
-                            </div>
-                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Artículos científicos y publicaciones académicas.</p>
-                        </div>
-                    `;
-                } else if (currentSearchType === 'images') {
-                    resultsHTML += `
-                        <h2 style="margin-bottom: 25px; color: #4a90e2;">🖼️ GIOVANNA Lente - Búsqueda de Imágenes "${query}":</h2>
+                        <h2 style="margin-bottom: 25px; color: #4a90e2;">🖼️ Imágenes para "${query}":</h2>
                         <div class="result-item">
                             <div class="result-title">
                                 <a href="https://www.google.com/search?q=${encodeURIComponent(query)}&tbm=isch" target="_blank">
@@ -457,7 +507,7 @@
                     `;
                 } else if (currentSearchType === 'videos') {
                     resultsHTML += `
-                        <h2 style="margin-bottom: 25px; color: #4a90e2;">📺 Búsqueda de Videos "${query}":</h2>
+                        <h2 style="margin-bottom: 25px; color: #4a90e2;">📺 Videos para "${query}":</h2>
                         <div class="result-item">
                             <div class="result-title">
                                 <a href="https://www.youtube.com/results?search_query=${encodeURIComponent(query)}" target="_blank">
@@ -496,11 +546,11 @@
                         </div>
                         <div class="result-item">
                             <div class="result-title">
-                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}&tbm=isch&tbs=qdr:y" target="_blank">
-                                    👁️ ${query} - Búsqueda Visual Avanzada
+                                <a href="https://images.google.com/searchbyimage?image_url=${encodeURIComponent(query)}" target="_blank">
+                                    👁️ ${query} - Búsqueda Inversa
                                 </a>
                             </div>
-                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Imágenes recientes con búsqueda visual potenciada.</p>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Encuentra el origen y usos de cualquier imagen.</p>
                         </div>
                         <div class="result-item">
                             <div class="result-title">
@@ -508,7 +558,35 @@
                                     🎯 ${query} - TinEye
                                 </a>
                             </div>
-                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Búsqueda inversa de imágenes y detección de origen.</p>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Motor de búsqueda inversa especializado en imágenes.</p>
+                        </div>
+                    `;
+                } else if (currentSearchType === 'news') {
+                    resultsHTML += `
+                        <h2 style="margin-bottom: 25px; color: #4a90e2;">📰 Noticias para "${query}":</h2>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://news.google.com/search?q=${encodeURIComponent(query)}" target="_blank">
+                                    📰 ${query} - Google Noticias
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Últimas noticias y artículos de actualidad.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://www.google.com/search?q=${encodeURIComponent(query)}&tbm=nws" target="_blank">
+                                    🗞️ ${query} - Noticias Completas
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Búsqueda completa en medios de comunicación internacionales.</p>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-title">
+                                <a href="https://www.bing.com/news/search?q=${encodeURIComponent(query)}" target="_blank">
+                                    📡 ${query} - Bing Noticias
+                                </a>
+                            </div>
+                            <p style="margin: 8px 0 0 0; opacity: 0.8;">Fuentes alternativas de noticias y perspectivas diferentes.</p>
                         </div>
                     `;
                 }
@@ -516,7 +594,7 @@
                 resultsHTML += `
                     <div style="text-align: center; margin-top: 25px; padding: 20px; background: rgba(74, 144, 226, 0.1); border-radius: 12px;">
                         <p style="margin: 0; color: #4a90e2; font-weight: bold;">
-                            💡 Todos los enlaces se abren en nuevas pestañas - Siempre puedes volver a GIOVANNA ATENEA IA
+                            💡 <strong>GIOVANNA PROTEGE TU NAVEGACIÓN:</strong> Todos los enlaces se abren en nuevas pestañas
                         </p>
                     </div>
                 `;
@@ -527,7 +605,7 @@
 
         function hideSearchResults() {
             document.getElementById('searchResults').style.display = 'none';
-            document.getElementById('searchInput').value = '';
+            document.getElementById('additionalSearchInput').value = '';
         }
 
         function selectBackground() {
@@ -617,38 +695,4 @@
                             <div style="opacity: 0.8; font-size: 14px;">Audio de alta fidelidad y exclusivos</div>
                         </div>
                         <a href="https://music.apple.com/search?term=${encodeURIComponent(query)}" target="_blank" 
-                           style="background: #000000; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold;">
-                            🍎 Abrir
-                        </a>
-                    </div>
-                    
-                    <div style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(0,255,136,0.1); border-radius: 10px; border: 1px solid rgba(0,255,136,0.3);">
-                        <p style="margin: 0; font-size: 14px;">
-                            🎵 <strong>GIOVANNA MUSIC:</strong> Todos los enlaces se abren en nuevas pestañas para que nunca pierdas tu página
-                        </p>
-                    </div>
-                `;
-            }, 1000);
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('searchInput');
-            const musicSearchInput = document.getElementById('music-search');
-            
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    performSearch();
-                }
-            });
-            
-            musicSearchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    searchMusicInternal();
-                }
-            });
-        });
-    </script>
-
-</body>
-</html>
+                           style
