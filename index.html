@@ -695,4 +695,38 @@
                             <div style="opacity: 0.8; font-size: 14px;">Audio de alta fidelidad y exclusivos</div>
                         </div>
                         <a href="https://music.apple.com/search?term=${encodeURIComponent(query)}" target="_blank" 
-                           style
+                           style="background: #000000; color: white; padding: 10px 20px; border-radius: 20px; text-decoration: none; font-weight: bold;">
+                            🍎 Abrir
+                        </a>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 20px; padding: 15px; background: rgba(0,255,136,0.1); border-radius: 10px; border: 1px solid rgba(0,255,136,0.3);">
+                        <p style="margin: 0; font-size: 14px;">
+                            🎵 <strong>GIOVANNA MUSIC:</strong> Todos los enlaces se abren en nuevas pestañas - Nunca pierdes tu página
+                        </p>
+                    </div>
+                `;
+            }, 1000);
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const additionalSearchInput = document.getElementById('additionalSearchInput');
+            const musicSearchInput = document.getElementById('music-search');
+            
+            additionalSearchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    performAdditionalSearch();
+                }
+            });
+            
+            musicSearchInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    searchMusicInternal();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
